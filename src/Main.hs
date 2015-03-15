@@ -16,7 +16,7 @@ import Paths_idris_emptycg
 data Opts = Opts { inputs :: [FilePath],
                    output :: FilePath }
 
-showUsage = do putStrLn "Usage: idris-emptycg <ibc-files> [-o <output-file>]"
+showUsage = do putStrLn "Usage: idris-avr <ibc-files> [-o <output-file>]"
                exitWith ExitSuccess
 
 getOpts :: IO Opts
@@ -31,7 +31,7 @@ cg_main :: Opts -> Idris ()
 cg_main opts = do elabPrims
                   loadInputs (inputs opts) Nothing
                   mainProg <- elabMain
-                  ir <- compile (Via "emptycg") (output opts) mainProg
+                  ir <- compile (Via "avr") (output opts) mainProg
                   runIO $ codegenEmpty ir
 
 main :: IO ()

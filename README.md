@@ -1,13 +1,12 @@
-Idris Empty Code Generator
+Idris AVR Code Generator
 --------------------------
 
-This is an code non-generator for Idris. That is, it's a project which builds
-an idris back end which doesn't actually do anything. You can use this as
-a starting point for a real back end, by:
+This is a code non-generator for Idris that targets ATMega chips.
 
-* Forking this repository (with a more descriptive name)
-* Filling out `src/IRTS/CodegenEmpty.hs`, probably also renaming it
-* Renaming the binary from `idris-emptycg` to something appropriate for
-  your back end
-* Putting any relevant run time support in `rts/`
+At the moment I am targetting the ATMEGA328p.
+
+It's based on the excellent empty code generator by Edwin Brady and my experiences
+making the GAP backend and the idris-c-boehm backend, and my experiences programming
+for the ATMega328p.
+
 
