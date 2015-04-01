@@ -6,12 +6,12 @@ import Idris.ElabDecls
 import Idris.REPL
 
 import IRTS.Compiler
-import IRTS.CodegenEmpty
+import IRTS.CodegenAVR
 
 import System.Environment
 import System.Exit
 
-import Paths_idris_emptycg
+import Paths_idris_avr
 
 data Opts = Opts { inputs :: [FilePath],
                    output :: FilePath }
@@ -31,8 +31,8 @@ cg_main :: Opts -> Idris ()
 cg_main opts = do elabPrims
                   loadInputs (inputs opts) Nothing
                   mainProg <- elabMain
-                  ir <- compile (Via "avr") (output opts) mainProg
-                  runIO $ codegenEmpty ir
+                  ir <- compile (Via "avr") (output opts) (Just mainProg)
+                  runIO $ codegenAVR ir
 
 main :: IO ()
 main = do opts <- getOpts
